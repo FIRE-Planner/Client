@@ -10,10 +10,11 @@ export const globalStyle = () => css`
   }
 
   html {
-    max-width: 992px;
+    width: 540px;
+    height: 100%;
     margin: 0 auto;
     box-sizing: border-box;
-    padding: 2rem;
+    border: 1px solid red;
   }
 
   button,
