@@ -33,7 +33,6 @@ const useInputValidation = ({ names, validate }: InputValidationParam) => {
 
   const eventHandler = ({ target }: InputEvent, payload?: any) => {
     const { name, value } = target;
-    console.log('name: ', name, 'value: ', value);
     setValues({ ...values, [name]: value });
     setResults({ ...results, [name]: validate(name, value, payload) });
   };
