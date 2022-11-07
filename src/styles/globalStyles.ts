@@ -1,37 +1,52 @@
 import { css } from '@emotion/react';
 
 export const globalStyle = () => css`
-  html,
-  body {
+  * {
     margin: 0;
     padding: 0;
+    font: inherit;
+    color: inherit;
+  }
+  *,
+  :after,
+  :before {
+    box-sizing: border-box;
+    flex-shrink: 0;
+  }
+  :root {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    cursor: default;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+    -moz-tab-size: 4;
+    tab-size: 4;
+  }
+  html,
+  body {
     font-family: 'Noto Sans', sans-serif;
     font-family: 'Noto Sans KR', sans-serif;
-  }
-
-  html {
-    width: 540px;
     height: 100%;
-    margin: 0 auto;
-    box-sizing: border-box;
-    border: 1px solid red;
   }
-
-  button,
-  input,
-  select {
-    margin: 0;
-  }
-
-  *,
-  *::before,
-  *::after {
-    box-sizing: inherit;
-  }
-
   img,
-  video {
-    height: auto;
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
     max-width: 100%;
+  }
+  button {
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+  a {
+    text-decoration: none;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
   }
 `;
