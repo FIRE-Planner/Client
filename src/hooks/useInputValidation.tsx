@@ -38,7 +38,6 @@ const useInputValidation = ({ names, validate }: InputValidationParam) => {
   };
 
   useEffect(() => {
-    console.log(results);
     setAllPass(names.reduce((acc, name) => acc && results[name].isPass, true));
   }, [results]);
 
