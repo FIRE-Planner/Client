@@ -1,4 +1,4 @@
-import { SignInContainer } from '@containers/SignIn';
+import SignInContainer from '@containers/SignIn';
 
 const SignIn = () => {
   return <SignInContainer />;

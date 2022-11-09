@@ -1,12 +1,11 @@
+import Link from 'next/link';
 import { FormEvent } from 'react';
 
-import { form } from '@containers/SignUp/signup.styled';
-
-import { InputWithLabel } from '@components/Input/InputWithLabel';
 import SubmitButton from '@components/Button/SubmitButton';
-
-import useLogin from '@hooks/useLogin';
+import { InputWithLabel } from '@components/Input/InputWithLabel';
+import { form, linkWrapper } from '@containers/SignUp/signup.styled';
 import useInputValidation from '@hooks/useInputValidation';
+import useLogin from '@hooks/useLogin';
 import validate from '@utils/validate';
 
 const SignUpContainer = () => {
@@ -41,8 +40,12 @@ const SignUpContainer = () => {
         helperText={results.password.isError && results.password.errorMsg}
       />
       <SubmitButton name="회원가입" />
+      <div css={linkWrapper}>
+        <div>이미 회원이신가요?</div>
+        <Link href="/signin">로그인 &rarr;</Link>
+      </div>
     </form>
   );
 };
 
-export { SignUpContainer };
+export default SignUpContainer;
