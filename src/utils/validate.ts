@@ -23,6 +23,10 @@ const validate: ValidateFC = (
   payload?: any,
 ): ValidationResult => {
   switch (name) {
+    case 'name':
+      return validateName(value);
+    case 'id':
+      return validateID(value);
     case 'email':
       return validateEmail(value);
     case 'password':
@@ -33,6 +37,22 @@ const validate: ValidateFC = (
     default:
       throw new Error('Invalid name');
   }
+};
+
+const validateName = (value: string): ValidationResult => {
+  if (isEmpty(value)) {
+    return { ...ERROR, errorMsg: '필수 입력 정보입니다!' };
+  }
+
+  return PASS;
+};
+
+const validateID = (value: string): ValidationResult => {
+  if (isEmpty(value)) {
+    return { ...ERROR, errorMsg: '필수 입력 정보입니다!' };
+  }
+
+  return PASS;
 };
 
 const validateEmail = (value: string): ValidationResult => {

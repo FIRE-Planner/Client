@@ -8,15 +8,21 @@ const button = css`
   color: white;
   background: #5c7cfa;
   margin-top: 12px;
+
+  :disabled {
+    background-color: #606060;
+    cursor: not-allowed;
+  }
 `;
 
 interface IProps {
-  name?: string;
+  name: string;
+  disabled: boolean;
 }
 
-const SubmitButton = ({ name = '제출' }: IProps) => {
+const SubmitButton = ({ name = '제출', disabled }: IProps) => {
   return (
-    <button css={button} type="submit">
+    <button css={button} type="submit" disabled={disabled}>
       {name}
     </button>
   );

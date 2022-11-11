@@ -32,7 +32,7 @@ const HelperText = css`
 const InputWithLabel = ({ name, label, helperText, ...rest }: IProps) => {
   return (
     <div css={container}>
-      <label>{label}</label>
+      <label htmlFor="input">{label}</label>
       <input name={name} {...rest} />
       {helperText && <div css={HelperText}>{helperText}</div>}
     </div>

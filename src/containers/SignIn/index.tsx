@@ -1,15 +1,17 @@
 import Link from 'next/link';
-import { FormEvent } from 'react';
+import { useRouter } from 'next/router';
+import { FormEvent, useEffect } from 'react';
 
 import SubmitButton from '@components/Button/SubmitButton';
 import { InputWithLabel } from '@components/Input/InputWithLabel';
 import { form, linkWrapper } from '@containers/SignIn/signin.styled';
 import useInputValidation from '@hooks/useInputValidation';
-import useLogin from '@hooks/useLogin';
+import useLogIn from '@hooks/useLogIn';
 import validate from '@utils/validate';
 
 const SignInContainer = () => {
-  // const { isSubmitting, isSuccess, resultMsg, requestLogIn } = useLogin();
+  const router = useRouter();
+  const { isSubmitting, isSuccess, resultMsg, requestLogIn } = useLogIn();
   const { values, results, isAllPass, eventHandler } = useInputValidation({
     names: ['email', 'password'],
     validate,
@@ -17,8 +19,15 @@ const SignInContainer = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(results.email, results.password);
+    const { email, password } = values;
+    requestLogIn(email, password);
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      setTimeout(() => router.push('/login'), 3000);
+    }
+  }, [isSuccess]);
 
   return (
     <form css={form} onSubmit={handleSubmit}>
@@ -39,7 +48,8 @@ const SignInContainer = () => {
         onBlur={eventHandler}
         helperText={results.password.isError && results.password.errorMsg}
       />
-      <SubmitButton name="로그인" />
+      <div>{resultMsg}</div>
+      <SubmitButton name="로그인" disabled={!isAllPass || isSubmitting} />
       <div css={linkWrapper}>
         <div>회원가입 하신 적이 없나요?</div>
         <Link href="/signup">회원가입 &rarr;</Link>
