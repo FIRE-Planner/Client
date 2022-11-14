@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import { ReactNode } from 'react';
 
 const layout = css`
-  width: 540px;
+  max-width: 540px;
   margin: 0 auto;
 `;
 

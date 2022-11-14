@@ -4,7 +4,6 @@ export const globalStyle = () => css`
   * {
     margin: 0;
     padding: 0;
-    font: inherit;
     color: inherit;
   }
   *,
@@ -23,13 +22,7 @@ export const globalStyle = () => css`
     -moz-tab-size: 4;
     tab-size: 4;
   }
-  html {
-    height: -webkit-fill-available;
-  }
-  body {
-    height: 100vh; /* '-webkit-fill-available'이 유효하지 않을 경우를 대비 */
-    height: -webkit-fill-available;
-  }
+
   html,
   body {
     font-family: 'Noto Sans', sans-serif;
@@ -55,5 +48,8 @@ export const globalStyle = () => css`
   table {
     border-collapse: collapse;
     border-spacing: 0;
+  }
+  ul {
+    list-style: none;
   }
 `;

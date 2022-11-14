@@ -1,13 +1,34 @@
+import { css } from '@emotion/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FormEvent, useEffect } from 'react';
 
 import SubmitButton from '@components/Button/SubmitButton';
 import { InputWithLabel } from '@components/Input/InputWithLabel';
-import { form, linkWrapper } from '@containers/SignUp/signup.styled';
 import useInputValidation from '@hooks/useInputValidation';
 import useSignUp from '@hooks/useSignUp';
 import validate from '@utils/validate';
+
+const form = css`
+  padding: 42px;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 24px;
+    font-weight: 600;
+  }
+`;
+
+const linkWrapper = css`
+  display: flex;
+  justify-content: space-between;
+  margin: 24px 12px;
+
+  a {
+    color: #4c6ef5;
+  }
+`;
 
 const SignUpContainer = () => {
   const router = useRouter();
@@ -75,7 +96,7 @@ const SignUpContainer = () => {
         name="checkPassword"
         type="password"
         placeholder="비밀번호를 다시 입력해주세요."
-        onBlur={(e) => eventHandler(e, values.password)}
+        onBlur={e => eventHandler(e, values.password)}
         helperText={
           results.checkPassword.isError && results.checkPassword.errorMsg
         }
